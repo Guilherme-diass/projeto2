@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h3 {
+            margin-top: 0;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        p {
+            margin-top: 10px;
+        }
+        p a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        p a button {
+            width: auto;
+            padding: 5px 10px;
+            background-color: #28a745;
+        }
+        p a button:hover {
+            background-color: #218838;
+        }
+    </style>
+    <script>
+        function toggleFields() {
+            var userType = document.getElementById("user_type").value;
+            var pacienteFields = document.getElementById("pacienteFields");
+            var alunoFields = document.getElementById("alunoFields");
+            var psicologoFields = document.getElementById("psicologoFields");
+
+            pacienteFields.style.display = "none";
+            alunoFields.style.display = "none";
+            psicologoFields.style.display = "none";
+
+            if (userType === "paciente") {
+                pacienteFields.style.display = "block";
+            } else if (userType === "aluno") {
+                alunoFields.style.display = "block";
+            } else if (userType === "psicologo") {
+                psicologoFields.style.display = "block";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <form action="create_account.php" method="post">
+            <h2>Cadastro</h2>
+            <label for="user_type">Tipo de Usuário:</label>
+            <select id="user_type" name="user_type" onchange="toggleFields()" required>
+                <option value="">Selecione</option>
+                <option value="paciente">Paciente</option>
+                <option value="aluno">Aluno</option>
+                <option value="psicologo">Psicólogo</option>
+            </select><br>
+
+            <div id="pacienteFields" style="display: none;">
+                <h3>Cadastro de Paciente</h3>
+                <label for="paciente_name">Nome:</label>
+                <input type="text" id="paciente_name" name="paciente_name"><br>
+                <label for="paciente_email">Email:</label>
+                <input type="email" id="paciente_email" name="paciente_email"><br>
+                <label for="paciente_password">Senha:</label>
+                <input type="password" id="paciente_password" name="paciente_password"><br>
+            </div>
+
+            <div id="alunoFields" style="display: none;">
+                <h3>Cadastro de Aluno</h3>
+                <label for="aluno_name">Nome:</label>
+                <input type="text" id="aluno_name" name="aluno_name"><br>
+                <label for="aluno_email">Email:</label>
+                <input type="email" id="aluno_email" name="aluno_email"><br>
+                <label for="aluno_password">Senha:</label>
+                <input type="password" id="aluno_password" name="aluno_password"><br>
+            </div>
+
+            <div id="psicologoFields" style="display: none;">
+                <h3>Cadastro de Psicólogo</h3>
+                <label for="psicologo_name">Nome:</label>
+                <input type="text" id="psicologo_name" name="psicologo_name"><br>
+                <label for="psicologo_email">Email:</label>
+                <input type="email" id="psicologo_email" name="psicologo_email"><br>
+                <label for="psicologo_password">Senha:</label>
+                <input type="password" id="psicologo_password" name="psicologo_password"><br>
+                <label for="psicologo_crp">CRP:</label>
+                <input type="text" id="psicologo_crp" name="psicologo_crp"><br>
+            </div>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+        <p>Já possui uma conta? <a href="login.php"><button type="button">Login</button></a></p>
+    </div>
+</body>
+</html>
